@@ -1,8 +1,8 @@
-<h1 align="center">Node.js REST API Boilerplate</h1>
+<h1 align="center">Barber Shop API (under construction)</h1>
 
 ## :rocket: About the project
 
-A Node.js REST API boilerplate.
+Coming soon!
 
 ## :gear: Installation
 
