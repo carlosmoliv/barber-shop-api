@@ -1,7 +1,9 @@
 import Joi from "joi";
 import { AppError } from "../../../shared/errors/AppError";
-import { userModel } from "../../models";
-import { User } from "../infrastructure/mongo/models/User";
+import { User } from "../infrastructure/typeorm/entities/User";
+import { UserRepository } from "../infrastructure/typeorm/repositories/UserRepository";
+
+const userRepository = new UserRepository();
 
 export const createUserSchema = Joi.object<User>({
   name: Joi.string().max(30).required().messages({
@@ -15,7 +17,7 @@ export const createUserSchema = Joi.object<User>({
     .email()
     .required()
     .external(async (email: string) => {
-      const user = await userModel.findOne({ email: email });
+      const user = await userRepository.findByEmail(email);
 
       if (user)
         throw new AppError(

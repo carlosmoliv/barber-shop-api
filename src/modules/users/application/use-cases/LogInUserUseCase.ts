@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { Role } from "../../domain/user.enums";
+import { UserRole } from "../../domain/user.enums";
 import { comparePasswords } from "../../../../shared/infrastructure/utils/bcrypt.utils";
 import { AppError } from "../../../../shared/errors/AppError";
 import { createToken } from "../../../../shared/infrastructure/utils/jwt.utils";
@@ -15,7 +15,7 @@ export class LogInUserUseCase {
     private userRepository: IUserRepository
   ) {}
 
-  async execute(data: ILoginUserByEmail, role: Role = Role.student) {
+  async execute(data: ILoginUserByEmail, role: UserRole = UserRole.student) {
     const { email, password } = data;
 
     const user = await this.userRepository.findByEmailAndRole(email, role);
@@ -28,7 +28,7 @@ export class LogInUserUseCase {
     if (!isPasswordValid)
       throw new AppError("AuthenticationError", "Invalid credentials.", 401);
 
-    const token = createToken({ userId: user._id });
+    const token = createToken({ userId: user.id });
     user.token = token;
 
     return {

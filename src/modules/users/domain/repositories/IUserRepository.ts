@@ -1,9 +1,11 @@
-import { User } from "../../infrastructure/mongo/models/User";
+import { User } from "../../infrastructure/typeorm/entities/User";
 import { ICreateUser } from "../dtos/ICreateUser.dto";
-import { Role } from "../user.enums";
+import { UserRole } from "../user.enums";
 
 export interface IUserRepository {
-  findByIdAndRole(userId: string, role: Role): Promise<User | null>;
-  findByEmailAndRole(email: string, role: Role): Promise<User | null>;
+  findById(userId: string): Promise<User | null>;
+  findByEmail(email: string): Promise<User | null>;
+  findByIdAndRole(userId: string, role: UserRole): Promise<User | null>;
+  findByEmailAndRole(email: string, role: UserRole): Promise<User | null>;
   createUserAdmin(data: ICreateUser): Promise<User>;
 }

@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import { JsonWebTokenError, JwtPayload } from "jsonwebtoken";
-import { userModel } from "../../../../modules/models";
-import { Role } from "../../../../modules/users/domain/user.enums";
+import { UserRole } from "../../../../modules/users/domain/user.enums";
+import { UserRepository } from "../../../../modules/users/infrastructure/typeorm/repositories/UserRepository";
 import { verifyToken } from "../../utils/jwt.utils";
 import { logger } from "../../utils/logger.utils";
 
 export const verifyAuthentication =
-  (allowedRoles: Role[]) =>
+  (allowedRoles: UserRole[]) =>
   async (req: Request, res: Response, next: NextFunction) => {
     const { authorization } = req.headers;
 
@@ -21,7 +21,8 @@ export const verifyAuthentication =
 
       const decoded = verifyToken(token) as JwtPayload;
 
-      return userModel.findById(decoded.userId).then((user) => {
+      const userRepository = new UserRepository();
+      return userRepository.findById(decoded.userId).then((user) => {
         if (!user)
           return res.status(401).json({
             name: "AuthorizationError",

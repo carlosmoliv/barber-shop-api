@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response, Router } from "express";
-import { Role } from "../../../../modules/users/domain/user.enums";
+import { UserRole } from "../../../../modules/users/domain/user.enums";
 import { validator } from "../middlewares/validator.middleware";
 import { CreateUserByRoleController } from "../../../../modules/users/infrastructure/http/controllers/CreateUserController";
 import { LoginUserByRoleController } from "../../../../modules/users/infrastructure/http/controllers/LoginUserController";
@@ -11,14 +11,14 @@ const createUserByRoleController = new CreateUserByRoleController();
 const loginUserByRoleController = new LoginUserByRoleController();
 
 adminsRouter.post("/login", (req: Request, res: Response, next: NextFunction) =>
-  loginUserByRoleController.handle(req, res, next, Role.admin)
+  loginUserByRoleController.handle(req, res, next, UserRole.admin)
 );
 
 adminsRouter.post(
   "/register",
   validator(createUserSchema),
   (req: Request, res: Response, next: NextFunction) =>
-    createUserByRoleController.handle(req, res, next, Role.admin)
+    createUserByRoleController.handle(req, res, next, UserRole.admin)
 );
 
 export default adminsRouter;

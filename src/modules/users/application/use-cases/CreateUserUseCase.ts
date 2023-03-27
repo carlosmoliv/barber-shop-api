@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { hashPassword } from "../../../../shared/infrastructure/utils/bcrypt.utils";
 import { IUserRepository } from "../../domain/repositories/IUserRepository";
-import { Role } from "../../domain/user.enums";
+import { UserRole } from "../../domain/user.enums";
 
 interface ICreateUserRequest {
   name: string;
@@ -17,9 +17,9 @@ export class CreateUserUseCase {
     private userRepository: IUserRepository
   ) {}
 
-  async execute(data: ICreateUserRequest, role: Role = Role.student) {
+  async execute(data: ICreateUserRequest, role: UserRole = UserRole.student) {
     switch (role) {
-      case Role.admin:
+      case UserRole.admin:
         return this.userRepository.createUserAdmin({
           ...data,
           password: await hashPassword(data.password),

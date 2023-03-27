@@ -1,5 +1,5 @@
-import { Role } from "../../domain/user.enums";
 import { UserRepositoryInMemory } from "../../domain/repositories/in-memory/UserRepositoryInMemory";
+import { UserRole } from "../../domain/user.enums";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 describe("Create User by Role", () => {
@@ -18,9 +18,8 @@ describe("Create User by Role", () => {
       password: "12345678",
     };
 
-    const user = await createUserUseCase.execute(data, Role.admin);
+    const user = await createUserUseCase.execute(data, UserRole.admin);
 
-    expect(user.role).toEqual(Role.admin);
-    expect(user.admin).toBeDefined();
+    expect(user.role).toEqual(UserRole.admin);
   });
 });

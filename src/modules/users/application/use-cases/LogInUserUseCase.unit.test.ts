@@ -1,6 +1,6 @@
 import { AppError } from "../../../../shared/errors/AppError";
 import { UserRepositoryInMemory } from "../../domain/repositories/in-memory/UserRepositoryInMemory";
-import { Role } from "../../domain/user.enums";
+import { UserRole } from "../../domain/user.enums";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 import { LogInUserUseCase } from "./LogInUserUseCase";
 
@@ -22,7 +22,7 @@ describe("Login User by Role", () => {
         email: "johndoe.admin.1@example.com",
         password: "12345678",
       },
-      Role.admin
+      UserRole.admin
     );
 
     const result = await loginUserByRole.execute(
@@ -30,7 +30,7 @@ describe("Login User by Role", () => {
         email: user.email,
         password: "12345678",
       },
-      Role.admin
+      UserRole.admin
     );
 
     expect(result.token).toBeDefined();
@@ -42,7 +42,7 @@ describe("Login User by Role", () => {
       password: "87654321",
     };
 
-    await expect(loginUserByRole.execute(data, Role.admin)).rejects.toEqual(
+    await expect(loginUserByRole.execute(data, UserRole.admin)).rejects.toEqual(
       new AppError("AuthenticationError", "Invalid credentials.", 401)
     );
   });

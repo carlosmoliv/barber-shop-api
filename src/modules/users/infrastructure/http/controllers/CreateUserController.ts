@@ -1,12 +1,17 @@
 import { NextFunction, Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { Role } from "../../../domain/user.enums";
+import { UserRole } from "../../../domain/user.enums";
 import { logger } from "../../../../../shared/infrastructure/utils/logger.utils";
 import { CreateUserUseCase } from "../../../application/use-cases/CreateUserUseCase";
 
 export class CreateUserByRoleController {
-  async handle(req: Request, res: Response, next: NextFunction, role: Role) {
+  async handle(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+    role: UserRole
+  ) {
     try {
       const createUserUseCase = container.resolve(CreateUserUseCase);
 
