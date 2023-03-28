@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { hashPassword } from "../../../../shared/infrastructure/utils/bcrypt.utils";
+import { hashPassword } from "../../../../shared/infra/utils/bcrypt.utils";
 import { IUserRepository } from "../../domain/repositories/IUserRepository";
 
 interface ICreateUserRequest {

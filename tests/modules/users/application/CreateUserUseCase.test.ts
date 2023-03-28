@@ -1,6 +1,6 @@
-import { UserRepositoryInMemory } from "../../domain/repositories/in-memory/UserRepositoryInMemory";
-import { UserRole } from "../../domain/user.enums";
-import { CreateUserUseCase } from "./CreateUserUseCase";
+import { UserRepositoryInMemory } from "../../../../src/modules/users/domain/repositories/in-memory/UserRepositoryInMemory";
+import { UserRole } from "../../../../src/modules/users/domain/user.enums";
+import { CreateUserUseCase } from "../../../../src/modules/users/application/use-cases/CreateUserUseCase";
 
 describe("Create User", () => {
   let userRepositoryInMemory: UserRepositoryInMemory;

@@ -1,5 +1,4 @@
 import { DataSource } from "typeorm";
-import { Admin } from "../../../../modules/users/infrastructure/typeorm/entities/Admin";
 import { Client } from "../../../../modules/users/infrastructure/typeorm/entities/Client";
 import { User } from "../../../../modules/users/infrastructure/typeorm/entities/User";
 
@@ -12,7 +11,7 @@ export const dataSource = new DataSource({
   database: "barber-shop-api",
   synchronize: true,
   logging: false,
-  entities: [User, Admin, Client],
+  entities: [User, Client],
   subscribers: [],
   migrations: [],
 });

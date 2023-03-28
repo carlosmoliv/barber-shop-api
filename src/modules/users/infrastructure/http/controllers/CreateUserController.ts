@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { container } from "tsyringe";
-import { logger } from "../../../../../shared/infrastructure/utils/logger.utils";
+import { logger } from "../../../../../shared/infra/utils/logger.utils";
 import { CreateUserUseCase } from "../../../application/use-cases/CreateUserUseCase";
 
 export class CreateUserController {

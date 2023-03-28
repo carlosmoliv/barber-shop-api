@@ -1,8 +1,7 @@
 import { Repository } from "typeorm";
-import { dataSource } from "../../../../../shared/infrastructure/database/typeorm";
+import { dataSource } from "../../../../../shared/infra/database/typeorm";
 import { ICreateUser } from "../../../domain/dtos/ICreateUser.dto";
 import { IUserRepository } from "../../../domain/repositories/IUserRepository";
-import { UserRole } from "../../../domain/user.enums";
 import { User } from "../entities/User";
 
 export class UserRepository implements IUserRepository {
