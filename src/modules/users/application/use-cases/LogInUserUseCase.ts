@@ -1,6 +1,5 @@
 import { inject, injectable } from "tsyringe";
 
-import { UserRole } from "../../domain/user.enums";
 import { comparePasswords } from "../../../../shared/infrastructure/utils/bcrypt.utils";
 import { AppError } from "../../../../shared/errors/AppError";
 import { createToken } from "../../../../shared/infrastructure/utils/jwt.utils";
@@ -15,10 +14,10 @@ export class LogInUserUseCase {
     private userRepository: IUserRepository
   ) {}
 
-  async execute(data: ILoginUserByEmail, role: UserRole = UserRole.student) {
+  async execute(data: ILoginUserByEmail) {
     const { email, password } = data;
 
-    const user = await this.userRepository.findByEmailAndRole(email, role);
+    const user = await this.userRepository.findByEmail(email);
 
     if (!user)
       throw new AppError("AuthenticationError", "Invalid credentials.", 401);

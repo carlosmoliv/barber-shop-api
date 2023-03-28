@@ -1,8 +1,8 @@
 import express, { Router } from "express";
-import adminsRouter from "./admin.routes";
+import usersRouter from "./users.routes";
 
 const api: Router = express.Router();
 
-api.use("/admins", adminsRouter);
+api.use("/users", usersRouter);
 
 export default api;

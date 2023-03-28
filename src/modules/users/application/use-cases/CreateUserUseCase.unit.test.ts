@@ -2,7 +2,7 @@ import { UserRepositoryInMemory } from "../../domain/repositories/in-memory/User
 import { UserRole } from "../../domain/user.enums";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
-describe("Create User by Role", () => {
+describe("Create User", () => {
   let userRepositoryInMemory: UserRepositoryInMemory;
   let createUserUseCase: CreateUserUseCase;
 
@@ -11,15 +11,15 @@ describe("Create User by Role", () => {
     createUserUseCase = new CreateUserUseCase(userRepositoryInMemory);
   });
 
-  it("should create a user admin if role admin is provided", async () => {
+  it("should create a user with the data provided", async () => {
     const data = {
-      email: "johndoe.admin.1@example.com",
-      name: "John Doe Admin",
+      email: "johndoe.client.1@example.com",
+      name: "John Doe Client",
       password: "12345678",
     };
 
-    const user = await createUserUseCase.execute(data, UserRole.admin);
-
-    expect(user.role).toEqual(UserRole.admin);
+    const user = await createUserUseCase.execute(data);
+    expect(user.email).toEqual(data.email);
+    expect(user.name).toEqual(data.name);
   });
 });
