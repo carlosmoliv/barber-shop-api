@@ -16,7 +16,7 @@ export class CreateUserUseCase {
   ) {}
 
   async execute(data: ICreateUserRequest) {
-    return this.userRepository.createUser({
+    return this.userRepository.create({
       ...data,
       password: await hashPassword(data.password),
     });

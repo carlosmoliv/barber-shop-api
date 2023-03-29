@@ -1,7 +1,7 @@
 import Joi from "joi";
 import { AppError } from "../../../shared/errors/AppError";
-import { User } from "../infrastructure/typeorm/entities/User";
-import { UserRepository } from "../infrastructure/typeorm/repositories/UserRepository";
+import { User } from "../infra/typeorm/entities/User";
+import { UserRepository } from "../infra/typeorm/repositories/UserRepository";
 
 const userRepository = new UserRepository();
 

@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
-import { Client } from "../../../../modules/users/infrastructure/typeorm/entities/Client";
-import { User } from "../../../../modules/users/infrastructure/typeorm/entities/User";
+import { Client } from "../../../../modules/users/infra/typeorm/entities/Client";
+import { User } from "../../../../modules/users/infra/typeorm/entities/User";
 
 export const dataSource = new DataSource({
   type: "postgres",

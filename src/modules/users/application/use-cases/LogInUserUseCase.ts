@@ -5,7 +5,7 @@ import { AppError } from "../../../../shared/errors/AppError";
 import { createToken } from "../../../../shared/infra/utils/jwt.utils";
 
 import { IUserRepository } from "../../domain/repositories/IUserRepository";
-import { ILoginUserByEmail } from "../../domain/dtos/ILoginUserByEmail.dto";
+import { ILoginUserByEmailDTO } from "../../domain/dtos/ILoginUserByEmailDTO";
 
 @injectable()
 export class LogInUserUseCase {
@@ -14,7 +14,7 @@ export class LogInUserUseCase {
     private userRepository: IUserRepository
   ) {}
 
-  async execute(data: ILoginUserByEmail) {
+  async execute(data: ILoginUserByEmailDTO) {
     const { email, password } = data;
 
     const user = await this.userRepository.findByEmail(email);

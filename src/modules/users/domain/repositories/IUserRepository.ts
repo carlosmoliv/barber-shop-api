@@ -1,8 +1,9 @@
-import { User } from "../../infrastructure/typeorm/entities/User";
-import { ICreateUser } from "../dtos/ICreateUser.dto";
+import { User } from "../../infra/typeorm/entities/User";
+import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
 
 export interface IUserRepository {
   findById(userId: string): Promise<User | null>;
   findByEmail(email: string): Promise<User | null>;
-  createUser(data: ICreateUser): Promise<User>;
+  create(data: ICreateUserDTO): Promise<User>;
+  save(user: User): Promise<User>;
 }
