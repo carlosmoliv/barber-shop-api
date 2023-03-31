@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import swaggerUI from "swagger-ui-express";
 
-import "../../container";
+import "../container";
 import "../database/typeorm";
 import api from "./routes";
 import { expressLogger } from "../utils/logger.utils";
