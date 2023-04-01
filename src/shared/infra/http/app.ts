@@ -4,12 +4,11 @@ import cors from "cors";
 import swaggerUI from "swagger-ui-express";
 
 import "../container";
-import "../database/typeorm";
 import api from "./routes";
 import { expressLogger } from "../utils/logger.utils";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
 import swaggerDocs from "../../../swagger.json";
-import { dataSource } from "../database/typeorm";
+import * as database from "../database/sequelize";
 
 const configureExpress = () => {
   const app: express.Application = express();
@@ -27,4 +26,4 @@ const configureExpress = () => {
   return app;
 };
 
-export default () => dataSource.initialize().then(configureExpress);
+export default () => database.connect().sync().then(configureExpress);
