@@ -1,16 +1,11 @@
 import { UserRepositoryInMemory } from "../../../../../src/modules/users/domain/repositories/in-memory/UserRepositoryInMemory";
 import { CreateUserUseCase } from "../../../../../src/modules/users/application/use-cases/CreateUserUseCase";
 import { LogInUserUseCase } from "../../../../../src/modules/users/application/use-cases/LogInUserUseCase";
-import { sequelizeInstance } from "../../../../../src/shared/infra/database/sequelize";
 
 describe("Login User by Role", () => {
   let userRepository: UserRepositoryInMemory;
   let loginUser: LogInUserUseCase;
   let createUser: CreateUserUseCase;
-
-  beforeAll(() => {
-    return sequelizeInstance().sync();
-  });
 
   beforeEach(() => {
     userRepository = new UserRepositoryInMemory();

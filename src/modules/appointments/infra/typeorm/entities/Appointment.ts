@@ -4,7 +4,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
@@ -12,7 +12,7 @@ import { User } from "../../../../users/infra/typeorm/entities/User";
 
 @Entity("appointments")
 export class Appointment {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @ManyToOne(() => User, (user) => user.appointments)
@@ -27,8 +27,4 @@ export class Appointment {
 
   @UpdateDateColumn()
   updated_at: Date;
-
-  constructor() {
-    if (!this.id) this.id = uuidV4();
-  }
 }

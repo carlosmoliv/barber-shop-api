@@ -1,17 +1,17 @@
 import { DataSource } from "typeorm";
-import { Client } from "../../../../modules/users/infra/typeorm/entities/Client";
+import { Appointment } from "../../../../modules/appointments/infra/typeorm/entities/Appointment";
 import { User } from "../../../../modules/users/infra/typeorm/entities/User";
 
 export const dataSource = new DataSource({
   type: "postgres",
-  host: process.env.DATABASE_HOST,
+  host: process.env.DB_HOST,
   port: 5432,
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
   database: "barber-shop-api",
   synchronize: true,
   logging: false,
-  entities: [User, Client],
+  entities: [User, Appointment],
   subscribers: [],
   migrations: [],
 });

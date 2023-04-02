@@ -1,22 +1,16 @@
 import "dotenv/config";
-import { sequelizeInstance } from "../database/sequelize";
+import { dataSource } from "../database/typeorm";
 import { logger } from "../utils/logger.utils";
 import app from "./app";
 
 const PORT = process.env.PORT || 4000;
 
-sequelizeInstance()
-  .authenticate()
+dataSource
+  .initialize()
   .then(() => {
-    logger.info("Database connection has been established successfully.");
-
-    sequelizeInstance()
-      .sync()
-      .then(async () =>
-        app.listen(PORT, () => logger.info(`Server running on port ${PORT}`))
-      );
+    app.listen(PORT, () => logger.info(`Server running on port ${PORT}`));
   })
-  .catch((error: Error) => {
-    logger.error("Unable to connect to the database:", error);
+  .catch((error) => {
+    logger.error(error);
     process.exit(1);
   });

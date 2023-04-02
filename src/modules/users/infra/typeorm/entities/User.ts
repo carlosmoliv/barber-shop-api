@@ -3,16 +3,15 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { UserRole } from "../../../domain/user.enums";
-import { v4 as uuidV4 } from "uuid";
 import { Appointment } from "../../../../appointments/infra/typeorm/entities/Appointment";
 
 @Entity("users")
 export class User {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()
@@ -40,8 +39,4 @@ export class User {
 
   @UpdateDateColumn()
   update_at: Date;
-
-  constructor() {
-    if (!this.id) this.id = uuidV4();
-  }
 }

@@ -1,18 +1,9 @@
 import { UserRepositoryInMemory } from "../../../../../src/modules/users/domain/repositories/in-memory/UserRepositoryInMemory";
 import { CreateUserUseCase } from "../../../../../src/modules/users/application/use-cases/CreateUserUseCase";
-import { sequelizeInstance } from "../../../../../src/shared/infra/database/sequelize";
 
 describe("Create User", () => {
   let userRepositoryInMemory: UserRepositoryInMemory;
   let createUserUseCase: CreateUserUseCase;
-
-  beforeAll(() => {
-    return sequelizeInstance().sync();
-  });
-
-  afterAll(async () => {
-    await sequelizeInstance().close();
-  });
 
   beforeEach(() => {
     userRepositoryInMemory = new UserRepositoryInMemory();

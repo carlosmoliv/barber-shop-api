@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { JsonWebTokenError, JwtPayload } from "jsonwebtoken";
 import { UserRole } from "../../../../modules/users/domain/user.enums";
-import { UserRepository } from "../../../../modules/users/infra/sequelize/repositories/UserRepository";
+import { UserRepository } from "../../../../modules/users/infra/typeorm/repositories/UserRepository";
 import { verifyToken } from "../../utils/jwt.utils";
 import { logger } from "../../utils/logger.utils";
 
