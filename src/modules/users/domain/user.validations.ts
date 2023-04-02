@@ -1,9 +1,6 @@
 import Joi from "joi";
 import { AppError } from "../../../shared/errors/AppError";
 import { User } from "../infra/typeorm/entities/User";
-import { UserRepository } from "../infra/typeorm/repositories/UserRepository";
-
-const userRepository = new UserRepository();
 
 export const createUserSchema = Joi.object<User>({
   name: Joi.string().max(30).required().messages({
@@ -13,19 +10,5 @@ export const createUserSchema = Joi.object<User>({
     .trim()
     .pattern(new RegExp("^[a-zA-Z0-9]{8,30}$"))
     .required(),
-  email: Joi.string()
-    .email()
-    .required()
-    .external(async (email: string) => {
-      const user = await userRepository.findByEmail(email);
-
-      if (user)
-        throw new AppError(
-          "UserConflictError",
-          "User already exists with the provided email address.",
-          409
-        );
-
-      return null;
-    }),
+  email: Joi.string().email().required(),
 });

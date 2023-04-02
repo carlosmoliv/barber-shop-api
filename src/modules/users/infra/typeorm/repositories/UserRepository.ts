@@ -4,31 +4,31 @@ import { ICreateUserDTO } from "../../../domain/dtos/ICreateUserDTO";
 import { IUserRepository } from "../../../domain/repositories/IUserRepository";
 import { User } from "../entities/User";
 
-export class UserRepository implements IUserRepository {
-  private ormRepository: Repository<User>;
+// export class UserRepository implements IUserRepository {
+//   private ormRepository: Repository<User>;
 
-  constructor() {
-    this.ormRepository = dataSource.getRepository(User);
-  }
+//   constructor() {
+//     this.ormRepository = dataSource.getRepository(User);
+//   }
 
-  async findById(userId: string): Promise<User | null> {
-    return this.ormRepository.findOne({ where: { id: userId } });
-  }
+//   async findById(userId: string): Promise<User | null> {
+//     return this.ormRepository.findOne({ where: { id: userId } });
+//   }
 
-  async findByEmail(email: string): Promise<User | null> {
-    return this.ormRepository.findOne({ where: { email: email } });
-  }
+//   async findByEmail(email: string): Promise<User | null> {
+//     return this.ormRepository.findOne({ where: { email: email } });
+//   }
 
-  async create(data: ICreateUserDTO) {
-    const user = this.ormRepository.create({
-      ...data,
-    });
+//   async create(data: ICreateUserDTO) {
+//     const user = this.ormRepository.create({
+//       ...data,
+//     });
 
-    await this.ormRepository.save(user);
-    return user;
-  }
+//     await this.ormRepository.save(user);
+//     return user;
+//   }
 
-  async save(user: User) {
-    return this.ormRepository.save(user);
-  }
-}
+//   async save(user: User) {
+//     return this.ormRepository.save(user);
+//   }
+// }

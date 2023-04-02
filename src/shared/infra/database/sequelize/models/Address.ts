@@ -1,10 +1,24 @@
-import { Column, ForeignKey, Table } from "sequelize-typescript";
-import { OneToOne } from "typeorm";
+import { DataTypes } from "sequelize";
+import {
+  BelongsTo,
+  Column,
+  ForeignKey,
+  Model,
+  PrimaryKey,
+  Table,
+} from "sequelize-typescript";
+import { v4 as uuidV4 } from "uuid";
 import { User } from "../../../../../modules/users/infra/sequelize/models/User";
-import { BaseModel } from "./BaseModel";
 
 @Table({ timestamps: false, tableName: "addresses" })
-export class Address extends BaseModel {
+export class Address extends Model {
+  @PrimaryKey
+  @Column({
+    defaultValue: () => uuidV4(),
+    type: DataTypes.UUID,
+  })
+  id: string;
+
   @Column
   street: string;
 
@@ -26,10 +40,12 @@ export class Address extends BaseModel {
   @Column
   country: string;
 
-  @OneToOne(() => User)
-  user: User;
+  @Column
+  zipCode: string;
 
   @ForeignKey(() => User)
-  @Column
   userId: string;
+
+  @BelongsTo(() => User)
+  user: User;
 }

@@ -18,6 +18,12 @@
     "emitDecoratorMetadata": true,
     "sourceMap": true,
     "resolveJsonModule": true
+    // "baseUrl": "./src",
+    // "paths": {
+    //   "@modules/*": ["modules/*"],
+    //   "@config/*": ["config/*"],
+    //   "@shared/*": ["shared/*"]
+    // }
   },
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

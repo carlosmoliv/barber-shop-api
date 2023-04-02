@@ -1,4 +1,4 @@
-import { User } from "../../infra/typeorm/entities/User";
+import { User } from "../../infra/sequelize/models/User";
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
 
 export interface IUserRepository {

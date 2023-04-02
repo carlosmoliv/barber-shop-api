@@ -1,8 +1,7 @@
 import crypto from "node:crypto";
 import { IUserRepository } from "../IUserRepository";
-import { User } from "../../../infra/typeorm/entities/User";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { IUpdateUserDTO } from "../../dtos/IUpdateUserDTO";
+import { User } from "../../../infra/sequelize/models/User";
 
 export class UserRepositoryInMemory implements IUserRepository {
   private users: User[] = [];

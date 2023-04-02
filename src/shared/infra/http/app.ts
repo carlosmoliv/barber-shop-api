@@ -8,22 +8,19 @@ import api from "./routes";
 import { expressLogger } from "../utils/logger.utils";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
 import swaggerDocs from "../../../swagger.json";
-import * as database from "../database/sequelize";
 
-const configureExpress = () => {
-  const app: express.Application = express();
+const app: express.Application = express();
 
-  app.use(cors({ origin: process.env.CLIENT_URL }));
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: false }));
+app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-  app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
-  app.use(expressLogger);
-  app.use("/v1", api);
-  app.use(errorHandler);
+// app.use(expressLogger);
+app.use("/v1", api);
+app.use(errorHandler);
 
-  return app;
-};
+// export default () => connection().sync().then(configureExpress);
 
-export default () => database.connect().sync().then(configureExpress);
+export default app;

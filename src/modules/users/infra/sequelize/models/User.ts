@@ -1,3 +1,4 @@
+import { DataTypes } from "sequelize";
 import {
   Table,
   Column,
@@ -5,26 +6,39 @@ import {
   HasMany,
   HasOne,
   DataType,
+  CreatedAt,
+  UpdatedAt,
+  Model,
+  PrimaryKey,
 } from "sequelize-typescript";
+import { v4 as uuidV4 } from "uuid";
 import { Address } from "../../../../../shared/infra/database/sequelize/models/Address";
-import { BaseModel } from "../../../../../shared/infra/database/sequelize/models/BaseModel";
 import { Appointment } from "../../../../appointments/infra/sequelize/models/Appointment";
 import { UserRole } from "../../../domain/user.enums";
 
 @Table({ timestamps: true, tableName: "users" })
-export class User extends BaseModel {
-  @Column
+export class User extends Model {
+  @PrimaryKey
+  @Column({
+    defaultValue: () => uuidV4(),
+    type: DataTypes.UUID,
+  })
+  id: string;
+
+  @Column({ allowNull: false })
   name: string;
 
-  @Column
+  @Column({ allowNull: false })
   email: string;
 
-  @Column
+  @Column({ allowNull: false })
   password: string;
 
   @Default(true)
   @Column
   active: boolean;
+
+  token: string;
 
   @Default(UserRole.client)
   @Column(DataType.ENUM({ values: Object.values(UserRole) }))
@@ -35,4 +49,10 @@ export class User extends BaseModel {
 
   @HasMany(() => Appointment)
   appointments: Appointment[];
+
+  @CreatedAt
+  createdAt: Date;
+
+  @UpdatedAt
+  updateAt: Date;
 }
