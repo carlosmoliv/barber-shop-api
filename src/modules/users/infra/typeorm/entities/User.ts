@@ -6,8 +6,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { UserRole } from "../../../domain/user.enums";
-import { Appointment } from "../../../../appointments/infra/typeorm/entities/Appointment";
+import { UserRole } from "@modules/users/domain/user.enums";
+import { Appointment } from "@modules/appointments/infra/typeorm/entities/Appointment";
 
 @Entity("users")
 export class User {

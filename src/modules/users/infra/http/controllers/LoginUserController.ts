@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { container } from "tsyringe";
-import { logger } from "../../../../../shared/infra/utils/logger.utils";
-import { LogInUserUseCase } from "../../../application/use-cases/LogInUserUseCase";
+import { logger } from "@shared/infra/utils/logger.utils";
+import { LogInUserUseCase } from "@modules/users/application/use-cases/LogInUserUseCase";
 
 export class LoginUserController {
   async handle(req: Request, res: Response, next: NextFunction) {

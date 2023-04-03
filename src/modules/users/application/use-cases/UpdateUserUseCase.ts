@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
-import { EmailAlreadyExistsError } from "../../../../shared/errors/users/EmailAlreadyExistsError";
-import { UserNotFoundError } from "../../../../shared/errors/users/UserNotFoundError";
-import { IUpdateUserDTO } from "../../domain/dtos/IUpdateUserDTO";
-import { IUserRepository } from "../../domain/repositories/IUserRepository";
+import { EmailAlreadyExistsError } from "@shared/errors/users/EmailAlreadyExistsError";
+import { UserNotFoundError } from "@shared/errors/users/UserNotFoundError";
+import { IUpdateUserDTO } from "@modules/users/domain/dtos/IUpdateUserDTO";
+import { IUserRepository } from "@modules/users/domain/repositories/IUserRepository";
 
 @injectable()
 export class UpdateUserUseCase {

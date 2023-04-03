@@ -7,8 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
-import { User } from "../../../../users/infra/typeorm/entities/User";
+import { User } from "@modules/users/infra/typeorm/entities/User";
 
 @Entity("appointments")
 export class Appointment {

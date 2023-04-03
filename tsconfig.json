@@ -17,13 +17,14 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "sourceMap": true,
-    "resolveJsonModule": true
-    // "baseUrl": "./src",
-    // "paths": {
-    //   "@modules/*": ["modules/*"],
-    //   "@config/*": ["config/*"],
-    //   "@shared/*": ["shared/*"]
-    // }
+    "resolveJsonModule": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

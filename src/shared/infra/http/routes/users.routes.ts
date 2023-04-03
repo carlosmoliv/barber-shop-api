@@ -1,9 +1,9 @@
 import express, { NextFunction, Request, Response, Router } from "express";
-import { validator } from "../middlewares/validator.middleware";
-import { createUserSchema } from "../../../../modules/users/domain/user.validations";
-import { CreateUserController } from "../../../../modules/users/infra/http/controllers/CreateUserController";
-import { LoginUserController } from "../../../../modules/users/infra/http/controllers/LoginUserController";
-import { UpdateUserController } from "../../../../modules/users/infra/http/controllers/UpdateUserController";
+import { validator } from "@shared/infra/http/middlewares/validator.middleware";
+import { createUserSchema } from "@modules/users/domain/user.validations";
+import { CreateUserController } from "@modules/users/infra/http/controllers/CreateUserController";
+import { LoginUserController } from "@modules/users/infra/http/controllers/LoginUserController";
+import { UpdateUserController } from "@modules/users/infra/http/controllers/UpdateUserController";
 
 const usersRouter: Router = express.Router();
 

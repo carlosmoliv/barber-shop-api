@@ -1,4 +1,4 @@
-import MailProviderInMemory from "../../../../../src/shared/infra/container/MailProvider/in-memory/MailProviderInMemory";
+import MailProviderInMemory from "@shared/infra/container/MailProvider/in-memory/MailProviderInMemory";
 
 describe("MailProviderInMemory", () => {
   it("should add mail to mails array when sendMail is called", async () => {

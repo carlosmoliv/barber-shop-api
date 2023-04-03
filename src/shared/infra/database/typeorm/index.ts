@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
-import { Appointment } from "../../../../modules/appointments/infra/typeorm/entities/Appointment";
-import { User } from "../../../../modules/users/infra/typeorm/entities/User";
+import { Appointment } from "@modules/appointments/infra/typeorm/entities/Appointment";
+import { User } from "@modules/users/infra/typeorm/entities/User";
 
 export const dataSource = new DataSource({
   type: "postgres",

@@ -1,5 +1,5 @@
 import { Column, JoinColumn, OneToOne } from "typeorm";
-import { User } from "../../../../../modules/users/infra/typeorm/entities/User";
+import { User } from "@modules/users/infra/typeorm/entities/User";
 
 export class Address {
   @Column()

@@ -1,7 +1,7 @@
 import { container } from "tsyringe";
 import { logger } from "@typegoose/typegoose/lib/logSettings";
 import { NextFunction, Request, Response } from "express";
-import { UpdateUserUseCase } from "../../../application/use-cases/UpdateUserUseCase";
+import { UpdateUserUseCase } from "@modules/users/application/use-cases/UpdateUserUseCase";
 
 export class UpdateUserController {
   async handle(req: Request, res: Response, next: NextFunction) {

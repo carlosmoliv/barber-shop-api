@@ -1,11 +1,11 @@
 import { inject, injectable } from "tsyringe";
 
-import { comparePasswords } from "../../../../shared/infra/utils/bcrypt.utils";
-import { AppError } from "../../../../shared/errors/AppError";
-import { createToken } from "../../../../shared/infra/utils/jwt.utils";
+import { comparePasswords } from "@shared/infra/utils/bcrypt.utils";
+import { AppError } from "@shared/errors/AppError";
+import { createToken } from "@shared/infra/utils/jwt.utils";
 
-import { IUserRepository } from "../../domain/repositories/IUserRepository";
-import { ILoginUserByEmailDTO } from "../../domain/dtos/ILoginUserByEmailDTO";
+import { IUserRepository } from "@modules/users/domain/repositories/IUserRepository";
+import { ILoginUserByEmailDTO } from "@modules/users/domain/dtos/ILoginUserByEmailDTO";
 
 @injectable()
 export class LogInUserUseCase {

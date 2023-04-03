@@ -8,7 +8,7 @@ import {
   Table,
 } from "sequelize-typescript";
 import { v4 as uuidV4 } from "uuid";
-import { User } from "../../../../../modules/users/infra/sequelize/models/User";
+import { User } from "@modules/users/infra/sequelize/models/User";
 
 @Table({ timestamps: false, tableName: "addresses" })
 export class Address extends Model {

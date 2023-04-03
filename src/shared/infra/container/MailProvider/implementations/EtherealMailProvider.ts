@@ -1,5 +1,5 @@
 import nodemailer, { Transporter } from "nodemailer";
-import { logger } from "../../../utils/logger.utils";
+import { logger } from "@shared/infra/utils/logger.utils";
 import { ISendMailDTO } from "../dtos/SendMailDTO";
 import { IMailProvider } from "../IMailProvider";
 

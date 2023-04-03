@@ -1,5 +1,5 @@
-import { UserRepositoryInMemory } from "../../../../../src/modules/users/domain/repositories/in-memory/UserRepositoryInMemory";
-import { CreateUserUseCase } from "../../../../../src/modules/users/application/use-cases/CreateUserUseCase";
+import { UserRepositoryInMemory } from "@modules/users/domain/repositories/in-memory/UserRepositoryInMemory";
+import { CreateUserUseCase } from "@modules/users/application/use-cases/CreateUserUseCase";
 
 describe("Create User", () => {
   let userRepositoryInMemory: UserRepositoryInMemory;

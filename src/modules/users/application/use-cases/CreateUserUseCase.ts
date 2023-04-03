@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../../shared/errors/AppError";
-import { hashPassword } from "../../../../shared/infra/utils/bcrypt.utils";
-import { IUserRepository } from "../../domain/repositories/IUserRepository";
+import { AppError } from "@shared/errors/AppError";
+import { hashPassword } from "@shared/infra/utils/bcrypt.utils";
+import { IUserRepository } from "@modules/users/domain/repositories/IUserRepository";
 
 interface ICreateUserRequest {
   name: string;

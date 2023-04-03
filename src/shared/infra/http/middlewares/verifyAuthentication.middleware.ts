@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { JsonWebTokenError, JwtPayload } from "jsonwebtoken";
-import { UserRole } from "../../../../modules/users/domain/user.enums";
-import { UserRepository } from "../../../../modules/users/infra/typeorm/repositories/UserRepository";
-import { verifyToken } from "../../utils/jwt.utils";
-import { logger } from "../../utils/logger.utils";
+import { UserRole } from "@modules/users/domain/user.enums";
+import { UserRepository } from "@modules/users/infra/typeorm/repositories/UserRepository";
+import { verifyToken } from "@shared/infra/utils/jwt.utils";
+import { logger } from "@shared/infra/utils/logger.utils";
 
 export const verifyAuthentication =
   (allowedRoles: UserRole[]) =>

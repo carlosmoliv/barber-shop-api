@@ -1,6 +1,5 @@
 import Joi from "joi";
-import { AppError } from "../../../shared/errors/AppError";
-import { User } from "../infra/typeorm/entities/User";
+import { User } from "@modules/users/infra/typeorm/entities/User";
 
 export const createUserSchema = Joi.object<User>({
   name: Joi.string().max(30).required().messages({

@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
-import { Appointment } from "../../../../modules/appointments/infra/sequelize/models/Appointment";
-import { User } from "../../../../modules/users/infra/sequelize/models/User";
+import { Appointment } from "@modules/appointments/infra/sequelize/models/Appointment";
+import { User } from "@modules/users/infra/sequelize/models/User";
 import { Address } from "./models/Address";
 
 export const sequelizeInstance = () => {

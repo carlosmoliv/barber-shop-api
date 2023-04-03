@@ -12,8 +12,8 @@ import {
   PrimaryKey,
 } from "sequelize-typescript";
 import { v4 as uuidV4 } from "uuid";
-import { Address } from "../../../../../shared/infra/database/sequelize/models/Address";
-import { Appointment } from "../../../../appointments/infra/sequelize/models/Appointment";
+import { Address } from "@shared/infra/database/sequelize/models/Address";
+import { Appointment } from "@modules/appointments/infra/sequelize/models/Appointment";
 import { UserRole } from "../../../domain/user.enums";
 
 @Table({ timestamps: true, tableName: "users" })

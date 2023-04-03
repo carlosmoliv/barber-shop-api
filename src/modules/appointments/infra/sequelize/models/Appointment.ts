@@ -10,7 +10,7 @@ import {
   UpdatedAt,
 } from "sequelize-typescript";
 import { v4 as uuidV4 } from "uuid";
-import { User } from "../../../../users/infra/sequelize/models/User";
+import { User } from "@modules/users/infra/sequelize/models/User";
 
 @Table({ timestamps: true, tableName: "appointments" })
 export class Appointment extends Model {
